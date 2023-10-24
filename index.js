@@ -1,4 +1,5 @@
 const express = require("express")
+const { request, response } = require("express")
 const exphbs = require("express")
 const mysql = require ("mysql")
 
@@ -17,9 +18,37 @@ app.use(express.urlencoded({
 app.use(express.json())
 
 app.get("/", (requisicao, resposta) =>{
-    resposta.render("home")
+    response.render("registrar")
 
 })
+
+app.post("/register/save", (request, response)=>{
+   const {title, pagegty} = request.body
+
+   const book ={
+    title,
+    pagegty
+   }
+
+   const query = `
+    INSERT INTO books (title, pegeqty)
+    VALUES ('${title}', '${pageqty}')
+
+    `
+
+    conn.query(query, (erro) =>{
+        if (erro){
+            console.log(erro)
+            return
+        }
+        response.redirect("/")
+    })
+})
+
+app.get("/registrar", (request, response)=>{
+    response.render("home")
+})
+
 
 const conn = mysql.createConnection({
     host: "localhost",
