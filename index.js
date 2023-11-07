@@ -47,6 +47,24 @@ app.post("/register/save", (request, response)=>{
     })
 })
 
+app.get("/book/:id", (request, response) =>{
+    const id = request.params.id
+
+    const sql = ` 
+    SELECT * FROM books
+    WHERE id=${id}
+    `
+    conn.query(sql, (erro, data) => {
+        if (erro) {
+            return console.log(erro)
+
+        }
+        console.log(data)
+
+    })
+
+})
+
 app.get("/registrar", (request, response)=>{
     const sql ='SELCT * FROM books'
 
