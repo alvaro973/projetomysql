@@ -51,9 +51,13 @@ main > h2{
 }
 
 
-.buttons a{
+.buttons a,
+.buttons button{
     display: block;
     text-decoration: none;
+    padding: 5rem;
+    border-radius: .5rem;
+    font-size: 1rem;
 
 }
 .buttons .mais{
@@ -73,4 +77,14 @@ main > h2{
     background: #ffc107;
 
     
+}
+.buttons .excluir{
+    border: 1px solid #de3545;
+    background: #de3545;;
+    color: white;
+}
+.buttons .excluir:hover {
+    background: white;
+    color: #de3545;
+    cursor: pointer;
 }
